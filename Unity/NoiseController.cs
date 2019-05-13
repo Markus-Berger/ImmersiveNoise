@@ -12,34 +12,34 @@ public class NoiseController : MonoBehaviour {
     public GameObject player;
     private bool rasterGenerated = false;
     public float period = 0.1f;
-    public int collisionChecks = 10;
+    public int collisionChecks = 30;
     public int rayResolution = 1;
     public bool fullPath = false; //Combines vertical and horizontal diffraction, but this isn't part of the standard
     public LayerMask collisionMask;
     public LayerMask reflectionMask;
     public LayerMask terrainMask;
-    public float maximumDistance;
+    public float maximumDistance = 800;
     public GameObject audioSourceObject; //Game object with audio source that is configured as needed (spatialization)
-    public bool reflections = false;
-    public bool sidewaysDiffraction = false;
+    public bool reflections = true;
+    public bool sidewaysDiffraction = true;
     public bool downwardDiffraction = false; //Not part of the standard
     public int reflectionAngle = 180;
     public int angleSteps = 1;
     public bool debugMode = false; //Full debug that shows every collision path and diffraction point
-    public bool showTree = false; //Show paths relevant to the noise as colored lines
+    public bool showTree = true; //Show paths relevant to the noise as colored lines
     LineDrawer lineDrawer;
-    public float lineWidth = 0.1f;
+    public float lineWidth = 0.025f;
     public List<NoiseSource> currTrees = new List<NoiseSource>();
-    public float specularTolerance = 1.0f; //Deviance from specular angle at which a reflection is still counted as specular
+    public float specularTolerance = 0.5f; //Deviance from specular angle at which a reflection is still counted as specular
     private float maximumRaycastDistance = 200f; //For non noise-related stuff, specifically for scanning for the ground when creating the raster
     public bool raster = true;
-    public int gridSize = 1;
-    public int rasterRadius = 100; //Radius of the raster from the starting point of the listener
+    public int gridSize = 5;
+    public int rasterRadius = 50; //Radius of the raster from the starting point of the listener
     public float rasterHeight = 2; //Raster height during noise calculation
-    public float rasterHeightRender = 0.5f; //Raster height for visualization
-    public Vector3 rasterPointScale = new Vector3(0.2f, 0.2f, 0.2f);
+    public float rasterHeightRender = 1f; //Raster height for visualization
+    public Vector3 rasterPointScale = new Vector3(1f, 1f, 1f);
     public bool toggleData = false;
-    public float scaleFactor = 0.1f;
+    public float scaleFactor = 0.05f;
     public float playerHeight = 2; //Player height in world scale, set to same value as teleport height
     public bool downscaled = false;
     public GameObject rasterContainer;
