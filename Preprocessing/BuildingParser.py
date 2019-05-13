@@ -30,10 +30,7 @@ def writeBuilding(building, template, outputPath, outName, projection):
 		center = [center[0] + x, center[1] + y, max(center[2], z)]
 		posNr = posNr + 1
 	referencePoint = [center[0]/posNr, center[1]/posNr, center[2]]	
-	#Check if in bounds
-	if(not inBounds(referencePoint, 310661.476651, 5995856.558156, 311805.657554, 5994955.660174)):
-		print(outName + " out of bounds!")
-		return
+
 	#Reproject reference
 	print("Unprojected: " + str(referencePoint[0]) + " " + str(referencePoint[1]) + " " + str(referencePoint[2]))
 	lat, lon, height = pyproj.transform(srcProj, EPSG4326, referencePoint[0], referencePoint[1], referencePoint[2])
